@@ -1,0 +1,24 @@
+.wraper {
+  min-height: 100vh;
+}
+img {
+  height: 320px;
+  width: 320px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+body,
+.card {
+  background: linear-gradient(
+    rgba(30, 196, 242, 0.384),
+    rgba(113, 36, 143, 0.262)
+  );
+}
+
+.tab {
+  margin-bottom: 2rem;
+}

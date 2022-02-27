@@ -1,5 +1,5 @@
 const noteArr = [];
-const list = document.querySelector(".list-group");
+const card = document.querySelector(".card");
 function submitClicked(e) {
   const note = {
     title: e.target[0].value,
@@ -15,15 +15,16 @@ function display(noteArr) {
   noteArr.map((item, index) => {
     str =
       str +
-      `<li class="list-group-item"> ${index + 1} ${item.title} ${item.body}
-      <button type="button" class="btn btn-primary" onclick = "deleteItem(${index})">Delete Note</button>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" 
-      onclick = "openModal(${index})">
-  View Note
-</button>
-       </li> `;
+      `<div class="bg-secondary mb-4"> <div class="card-header bg-success">
+       ${item.title}  <button type="button" class="btn btn-warning" onclick = "deleteItem(${index})"><i class="fas fa-trash"></i></button>
+  </div>
+  <div class="card-body mt-4">
+    <p class="card-text">${item.body}</p>
+  </div>
+  </div>
+       `;
   });
-  list.innerHTML = str;
+  card.innerHTML = str;
 }
 
 function deleteItem(i) {
@@ -41,28 +42,4 @@ function searchTitle(e) {
     (item) => item.title.includes(searchText) === true
   );
   display(newArray);
-}
-
-function openModal(i) {
-  let str = `<!-- Modal -->
-  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-  
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>`;
-  document.querySelector(".heading").appendChild = str;
 }
